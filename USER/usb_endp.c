@@ -43,13 +43,14 @@
 uint8_t int_Receive_Buffer[2];
 volatile uint8_t PrevXferComplete = 1;
 u32 data[16]={500, 707, 500};
+u32 debug_data[16]={500, 707, 500};
 
 
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 void EP1_IN_Callback(void)
 {
-	USB_SIL_Write(EP1_IN, (u8*)(data), 64);
+	USB_SIL_Write(EP1_IN, (u8*)(debug_data), 64);
 	SetEPRxStatus(ENDP1, EP_RX_NAK); // NOT TX DISABLE
 	SetEPTxStatus(ENDP1, EP_TX_VALID);
 }
